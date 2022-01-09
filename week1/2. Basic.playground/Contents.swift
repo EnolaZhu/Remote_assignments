@@ -20,14 +20,14 @@ let recordValue = Float(average)
 var flag: Bool = true
 var inputString: String = "Hello world."
 let bitsInBite: Int = 8
-let averageScore: Float = 86.8
+let averageScore: Double = 86.8
 
 // 5
 var salary = 22000
 salary += 28000
 
 /*  6
-=
+==
 */
 
 //7

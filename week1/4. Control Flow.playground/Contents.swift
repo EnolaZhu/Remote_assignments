@@ -8,9 +8,6 @@ for num in lottoNumbers.count - 3 ... lottoNumbers.count - 1 {
 for num in lottoNumbers.reversed() {
     print(num)
 }
-lottoNumbers.filter { i in
-    return i % 2 == 0
-}
 
 for num in lottoNumbers.filter({ item in
     return item % 2 == 0
@@ -27,28 +24,35 @@ while i < lastCount {
     i += 1
 }
 
-var k = 1
-while k <= lottoNumbers.count {
-    print(lottoNumbers[lottoNumbers.count - k])
-    k += 1
+let lottoNumbers = [10, 9, 8, 7, 6, 5]
+let lastIndex = lottoNumbers.count - 1
+var i = 0
+while i <= lastIndex {
+    print(lottoNumbers[lastIndex - i])
+    i += 1
 }
 
-while i < lottoNumbers.count - 1 {
+let lastIndex = lottoNumbers.count - 1
+var i = 0
+while i < lastIndex {
     print(lottoNumbers[i])
     i += 2
 }
 
 // 4
-var a = 1
+let lastIndex = lottoNumbers.count - 1
+var i = 0
 repeat {
-    print(lottoNumbers[lottoNumbers.count - a])
-    a += 1
-} while a <= lottoNumbers.count
+    print(lottoNumbers[lastIndex - i])
+    i += 1
+} while i <= lastIndex
+
 
 repeat {
     print(lottoNumbers[i])
     i += 2
-} while i < lottoNumbers.count
+} while i <= lastIndex
+
 
  5
 /* while: distinguish the condition firstly，then execute the code inside the curly braces.

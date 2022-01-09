@@ -4,8 +4,7 @@ func greet(person name: String) -> String {
 }
 
 // 2
-func multiply(a:Int, b:Int) {
-    let b = 10
+func multiply(a: Int,b: Int = 10) {
     print(a*b)
 }
 
