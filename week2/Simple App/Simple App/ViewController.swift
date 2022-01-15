@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var showText = ""
     var hexColor = "#71B9B4"
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
