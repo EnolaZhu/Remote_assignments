@@ -4,25 +4,20 @@ enum Gasoline: String {
     case oil95 = "95"
     case oil98 = "98"
     case oildiesel = "diesel"
-    func getPrice(_ gasoline: Gasoline.RawValue) -> Double {
-        switch gasoline {
-        case "92":
-            return 67.50
-        case "95":
-            return 56.24
-        case "98":
-            return 66.09
-        case "diesel":
-            return 87.09
-        default: break
-        }
-        return 0.0
+    func getPrice(gasoline: Gasoline) -> Double {
+        var priceOfgasoline: [Gasoline: Double] = [.oil92: 46.89, .oil95: 38.90, .oil98: 56.90, .oildiesel: 78.90]
+        return priceOfgasoline[gasoline] ?? 0.0
     }
 }
+var a = Gasoline.oil98
+print(a.getPrice(gasoline: .oil98))
 
-//// 2-1
+// 2-1
 class Pet {
-    var name: String?
+    var name: String
+    init(name: String) {
+        self.name = name 
+    }
 }
 
 class People {
