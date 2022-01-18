@@ -21,7 +21,7 @@ var gasoline = Gasoline.oil98
 print(gasoline.getPrice(gasoline))
 // 67.00
 print(gasoline.rawValue)
-// "98"
+
 
 /* associated values
  Definition：
@@ -42,7 +42,7 @@ class Pet {
 }
 
 class People {
-    var pet: Pet? = Pet()
+    var pet: Pet?
 }
 // 2-2
 var people = People()
