@@ -17,13 +17,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var checkText: UITextField!
     @IBOutlet weak var changeSegmentControl: UISegmentedControl!
     @IBOutlet weak var checkButton: UIButton!
-    var a = UITextField()
+    
     override func viewDidLoad() {
         let changeSegmentControl = UISegmentedControl(items: ["Log In", "Sign up"])
         super.viewDidLoad()
         onChange(changeSegmentControl)
         textFieldShouldReturn(acountText)
-        //        checkInfo(checkButton)
     }
     @IBAction func onChange(_ sender: UISegmentedControl) {
         changeSegmentControl.backgroundColor = UIColor.white
@@ -35,15 +34,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
         changeSegmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
         switchSegmented(changeSegmentControl.selectedSegmentIndex)
-        //        checkInfo(checkButton, changeSegmentControl.selectedSegmentIndex)
+        
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (textField == acountText) {
+            textField.text = ""
+        }
+        else if (textField == passwordText) {
+            textField.text = ""
+        }
+        else if (textField == checkText) {
+            textField.text = ""
+        }
     }
     func switchSegmented(_ theIndex: Int) {
+        textFieldDidBeginEditing(acountText)
+        textFieldDidBeginEditing(passwordText)
+        textFieldDidBeginEditing(checkText)
         if theIndex == 0 {
             checkLabel.textColor = UIColor.gray
             checkText.backgroundColor = UIColor.darkGray
+            checkText.isUserInteractionEnabled = false
         } else {
             checkText.backgroundColor = UIColor.white
             checkLabel.textColor = UIColor.black
+            checkText.isUserInteractionEnabled = true
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -57,25 +72,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
         switch changeSegmentControl.selectedSegmentIndex {
         case 0:
             if acountText.text == "appworks_school@gmail.com" && passwordText.text == "1234" {
-                return
-            } else {
-                showAlert("Login fail")
+                showSuccessAlert("Login success")
+            } else if acountText.text?.isEmpty ?? true {
+                showErrorAlert("Acount should not be empty")
+            } else if passwordText.text?.isEmpty ?? true {
+                showErrorAlert("Password should not be empty")
+            }
+            else {
+                showErrorAlert("Login fail")
             }
         case 1:
             if acountText.text?.isEmpty ?? true {
-                showAlert("Acount should not be empty")
+                showErrorAlert("Acount should not be empty")
             } else if passwordText.text?.isEmpty ?? true {
-                showAlert("Password should not be empty")
+                showErrorAlert("Password should not be empty")
             } else if checkText.text?.isEmpty ?? true {
-                showAlert("Check password should not be empty")
+                showErrorAlert("Check password should not be empty")
             } else if checkText.text != passwordText.text {
-                showAlert("Signup fail")
+                showErrorAlert("Signup fail")
+            } else {
+                showSuccessAlert("Signup success")
             }
         default:
             return
         }
-        func showAlert(_ message: String) {
+        func showErrorAlert(_ message: String) {
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        func showSuccessAlert(_ message: String) {
+            let alert = UIAlertController(title: "Success", message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
