@@ -39,11 +39,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField == acountText) {
             textField.text = ""
-        }
-        else if (textField == passwordText) {
+        } else if (textField == passwordText) {
             textField.text = ""
-        }
-        else if (textField == checkText) {
+        } else if (textField == checkText) {
             textField.text = ""
         }
     }
@@ -77,8 +75,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 showErrorAlert("Acount should not be empty")
             } else if passwordText.text?.isEmpty ?? true {
                 showErrorAlert("Password should not be empty")
-            }
-            else {
+            } else {
                 showErrorAlert("Login fail")
             }
         case 1:
